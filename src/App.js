@@ -10,6 +10,7 @@ class App extends Component {
 			{ name: 'Mazda', year: 2010 },
 		],
 		pageTitle: 'React components',
+		showCars: false,
 	};
 
 	changeTitleHandler = (newTitle) => {
@@ -18,9 +19,9 @@ class App extends Component {
 		});
 	};
 
-	handleInput = (event) => {
+	toggleCarsHandler = () => {
 		this.setState({
-			pageTitle: event.target.value,
+			showCars: !this.state.showCars,
 		});
 	};
 
@@ -29,39 +30,40 @@ class App extends Component {
 			textAlign: 'center',
 		};
 
+		let cars = null;
+
+		if (this.state.showCars) {
+			cars = this.state.cars.map((car, index) => {
+				return (
+					<Car
+						key={index}
+						name={car.name}
+						year={car.year}
+						onChangeTitle={() => this.changeTitleHandler(car.name)}
+					/>
+				);
+			});
+		}
+
 		return (
 			<div style={divStyle}>
 				<h1>{this.state.pageTitle}</h1>
-				<input type='text' onChange={this.handleInput} />
+				<button onClick={this.toggleCarsHandler}>Toggle</button>
 
-				<button onClick={this.changeTitleHandler.bind(this, 'Changed')}>Change title</button>
-
-				{this.state.cars.map((car, index) => {
-					return (
-						<Car
-							key={index}
-							name={car.name}
-							year={car.year}
-							onChangeTitle={() => this.changeTitleHandler(car.name)}
-						/>
-					);
-				})}
-
-				{/* <Car
-					name={cars[0].name}
-					year={cars[0].year}
-					onChangeTitle={this.changeTitleHandler.bind(this, cars[0].name)}
-				/>
-				<Car
-					name={cars[1].name}
-					year={cars[1].year}
-					onChangeTitle={() => this.changeTitleHandler(cars[1].name)}
-				/>
-				<Car
-					name={cars[2].name}
-					year={cars[2].year}
-					onChangeTitle={() => this.changeTitleHandler(cars[2].name)}
-				/> */}
+				{cars}
+				{/* 1 example */}
+				{/* {this.state.showCars
+					? this.state.cars.map((car, index) => {
+							return (
+								<Car
+									key={index}
+									name={car.name}
+									year={car.year}
+									onChangeTitle={() => this.changeTitleHandler(car.name)}
+								/>
+							);
+					  })
+					: null} */}
 			</div>
 		);
 	}
