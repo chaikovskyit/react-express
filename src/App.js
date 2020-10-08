@@ -19,7 +19,6 @@ class App extends Component {
 	};
 
 	handleInput = (event) => {
-		console.log('changed', event.target.value);
 		this.setState({
 			pageTitle: event.target.value,
 		});
@@ -30,8 +29,6 @@ class App extends Component {
 			textAlign: 'center',
 		};
 
-		const cars = this.state.cars;
-
 		return (
 			<div style={divStyle}>
 				<h1>{this.state.pageTitle}</h1>
@@ -39,7 +36,18 @@ class App extends Component {
 
 				<button onClick={this.changeTitleHandler.bind(this, 'Changed')}>Change title</button>
 
-				<Car
+				{this.state.cars.map((car, index) => {
+					return (
+						<Car
+							key={index}
+							name={car.name}
+							year={car.year}
+							onChangeTitle={() => this.changeTitleHandler(car.name)}
+						/>
+					);
+				})}
+
+				{/* <Car
 					name={cars[0].name}
 					year={cars[0].year}
 					onChangeTitle={this.changeTitleHandler.bind(this, cars[0].name)}
@@ -53,7 +61,7 @@ class App extends Component {
 					name={cars[2].name}
 					year={cars[2].year}
 					onChangeTitle={() => this.changeTitleHandler(cars[2].name)}
-				/>
+				/> */}
 			</div>
 		);
 	}
