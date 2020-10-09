@@ -57,7 +57,18 @@ class App extends Component {
 		});
 	}
 
+	// Life cicle function
+	componentWillMount() {
+		console.log('App componentWillMount');
+	}
+
+	componentDidMount() {
+		console.log('App componentDidMount');
+	}
+
 	render() {
+		console.log('App render');
+
 		const divStyle = {
 			textAlign: 'center',
 		};
