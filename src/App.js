@@ -36,6 +36,14 @@ class App extends Component {
 		});
 	};
 
+	deleteHeandler(index) {
+		const cars = this.state.cars.concat();
+		cars.splice(index, 1);
+		this.setState({
+			cars: cars,
+		});
+	}
+
 	render() {
 		const divStyle = {
 			textAlign: 'center',
@@ -51,6 +59,7 @@ class App extends Component {
 						name={car.name}
 						year={car.year}
 						onChangeName={(event) => this.onChangeName(event.target.value, index)}
+						onDelete={this.deleteHeandler.bind(this, index)}
 					/>
 				);
 			});
