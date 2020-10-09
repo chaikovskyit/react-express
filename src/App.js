@@ -3,15 +3,28 @@ import Car from './Car/Car.jsx';
 import './App.css';
 
 class App extends Component {
-	state = {
-		cars: [
-			{ name: 'Ford', year: 2018 },
-			{ name: 'Audi', year: 2016 },
-			{ name: 'Mazda', year: 2010 },
-		],
-		pageTitle: 'React components',
-		showCars: false,
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			cars: [
+				{ name: 'Ford', year: 2018 },
+				{ name: 'Audi', year: 2016 },
+				{ name: 'Mazda', year: 2010 },
+			],
+			pageTitle: 'React components',
+			showCars: false,
+		};
+	}
+
+	// state = {
+	// 	// cars: [
+	// 	// 	{ name: 'Ford', year: 2018 },
+	// 	// 	{ name: 'Audi', year: 2016 },
+	// 	// 	{ name: 'Mazda', year: 2010 },
+	// 	// ],
+	// 	// pageTitle: 'React components',
+	// 	// showCars: false,
+	// };
 
 	changeTitleHandler = (newTitle) => {
 		this.setState({

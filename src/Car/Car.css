@@ -7,9 +7,6 @@
 	border-radius: '5px';
 }
 
-.input {
-}
-
 .input:active,
 .input:focus {
 	outline: none;
