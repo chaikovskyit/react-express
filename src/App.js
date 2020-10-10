@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Car from './Car/Car.jsx';
 import './App.css';
+import Counter from './Counter/Counter';
 
 class App extends Component {
 	constructor(props) {
@@ -83,6 +84,7 @@ class App extends Component {
 			<div style={divStyle}>
 				{/* <h1>{this.state.pageTitle}</h1> */}
 				<h1>{this.props.title}</h1>
+				<Counter />
 				<button onClick={this.toggleCarsHandler}>Toggle</button>
 				<div
 					style={{
