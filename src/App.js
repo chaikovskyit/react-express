@@ -85,7 +85,9 @@ class App extends Component {
 				{/* <h1>{this.state.pageTitle}</h1> */}
 				<h1>{this.props.title}</h1>
 				<Counter />
-				<button onClick={this.toggleCarsHandler}>Toggle</button>
+				<button style={{ marginTop: '20px' }} onClick={this.toggleCarsHandler}>
+					Toggle
+				</button>
 				<div
 					style={{
 						width: 400,

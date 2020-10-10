@@ -4,13 +4,11 @@ export default class Counter extends Component {
 	state = {
 		counter: 0,
 	};
-
 	addCounter = () => {
 		this.setState({
 			counter: this.state.counter + 1,
 		});
 	};
-
 	removeCounter = () => {
 		this.setState({
 			counter: this.state.counter - 1,
