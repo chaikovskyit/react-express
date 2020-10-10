@@ -62,6 +62,8 @@ class App extends Component {
 
 		const divStyle = {
 			textAlign: 'center',
+			borderRadius: '5px',
+			background: 'rgb(54, 41, 41)',
 		};
 
 		let cars = null;

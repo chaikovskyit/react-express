@@ -1,0 +1,8 @@
+.counter {
+	display: block;
+	margin: 0 auto;
+	padding: 10px;
+	width: 150px;
+	border-radius: 5px;
+	background: rgb(75, 74, 74);
+}
