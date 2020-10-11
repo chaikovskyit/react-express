@@ -5,9 +5,16 @@ export default class Counter extends Component {
 	state = {
 		counter: 0,
 	};
+
 	addCounter = () => {
-		this.setState({
-			counter: this.state.counter + 1,
+		// this.setState({
+		// 	counter: this.state.counter + 1,
+		// });
+		// New method change state
+		this.setState((prevState) => {
+			return {
+				counter: prevState.counter + 1,
+			};
 		});
 	};
 	removeCounter = () => {
@@ -17,7 +24,7 @@ export default class Counter extends Component {
 	};
 	render() {
 		return (
-			<React.Fragment>
+			<div className='counter'>
 				<h2>Counter {this.state.counter}</h2>
 				<button onClick={this.addCounter}>
 					<strong>+</strong>
@@ -25,7 +32,7 @@ export default class Counter extends Component {
 				<button onClick={this.removeCounter}>
 					<strong>-</strong>
 				</button>
-			</React.Fragment>
+			</div>
 		);
 	}
 }
