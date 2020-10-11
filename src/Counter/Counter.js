@@ -17,7 +17,7 @@ export default class Counter extends Component {
 	};
 	render() {
 		return (
-			<div className='counter'>
+			<React.Fragment>
 				<h2>Counter {this.state.counter}</h2>
 				<button onClick={this.addCounter}>
 					<strong>+</strong>
@@ -25,7 +25,7 @@ export default class Counter extends Component {
 				<button onClick={this.removeCounter}>
 					<strong>-</strong>
 				</button>
-			</div>
+			</React.Fragment>
 		);
 	}
 }
