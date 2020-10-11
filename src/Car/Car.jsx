@@ -2,29 +2,12 @@ import React from 'react';
 import './Car.css';
 
 class Car extends React.Component {
-	componentWillReceiveProps(nextProps) {
-		console.log('Car componentWillReceiveProps', nextProps);
-	}
-
-	shouldComponentUpdate(nextProps, nextState) {
-		console.log('Car shouldComponentUpdate', nextProps, nextState);
-		return nextProps.name.trim() !== this.props.name.trim();
-	}
-
-	componentWillUpdate(nextProps, nextState) {
-		console.log('Car componentWillUpdate', nextProps, nextState);
-	}
-
-	componentDidUpdate() {
-		console.log('Car componentDidUpdate');
-	}
-
-	componentWillUnmount() {
-		console.log('Car componentWillUnmount');
-	}
-
 	render() {
 		console.log('Car render');
+
+		if (Math.random() > 0.7) {
+			throw new Error('Car random failed');
+		}
 
 		const inputClasses = ['input'];
 

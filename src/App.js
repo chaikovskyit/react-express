@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Car from './Car/Car.jsx';
 import './App.css';
 import Counter from './Counter/Counter';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
 	constructor(props) {
@@ -9,8 +10,8 @@ class App extends Component {
 		this.state = {
 			cars: [
 				{ name: 'Ford', year: 2018 },
-				// { name: 'Audi', year: 2016 },
-				// { name: 'Mazda', year: 2010 },
+				{ name: 'Audi', year: 2016 },
+				{ name: 'Mazda', year: 2010 },
 			],
 			pageTitle: 'React components',
 			showCars: false,
@@ -22,7 +23,6 @@ class App extends Component {
 			pageTitle: newTitle,
 		});
 	};
-
 	onChangeName(name, index) {
 		console.log(name, index);
 		const car = this.state.cars[index];
@@ -33,13 +33,11 @@ class App extends Component {
 			cars: cars,
 		});
 	}
-
 	toggleCarsHandler = () => {
 		this.setState({
 			showCars: !this.state.showCars,
 		});
 	};
-
 	deleteHeandler(index) {
 		const cars = this.state.cars.concat();
 		cars.splice(index, 1);
@@ -48,36 +46,23 @@ class App extends Component {
 		});
 	}
 
-	// Life cicle function
-	componentWillMount() {
-		console.log('App componentWillMount');
-	}
-
-	componentDidMount() {
-		console.log('App componentDidMount');
-	}
-
 	render() {
-		console.log('App render');
-
 		const divStyle = {
 			textAlign: 'center',
-			borderRadius: '5px',
-			background: 'rgb(54, 41, 41)',
 		};
 
 		let cars = null;
-
 		if (this.state.showCars) {
 			cars = this.state.cars.map((car, index) => {
 				return (
-					<Car
-						key={index}
-						name={car.name}
-						year={car.year}
-						onChangeName={(event) => this.onChangeName(event.target.value, index)}
-						onDelete={this.deleteHeandler.bind(this, index)}
-					/>
+					<ErrorBoundary key={index}>
+						<Car
+							name={car.name}
+							year={car.year}
+							onChangeName={(event) => this.onChangeName(event.target.value, index)}
+							onDelete={this.deleteHeandler.bind(this, index)}
+						/>
+					</ErrorBoundary>
 				);
 			});
 		}
