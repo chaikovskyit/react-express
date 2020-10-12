@@ -10,7 +10,7 @@ class App extends Component {
 		this.state = {
 			cars: [
 				{ name: 'Ford', year: 2018 },
-				{ name: 'Audi', year: '2016' },
+				{ name: 'Audi', year: 2016 },
 				{ name: 'Mazda', year: 2010 },
 			],
 			pageTitle: 'React components',
@@ -59,6 +59,7 @@ class App extends Component {
 						<Car
 							name={car.name}
 							year={car.year}
+							index={index}
 							onChangeName={(event) => this.onChangeName(event.target.value, index)}
 							onDelete={this.deleteHeandler.bind(this, index)}
 						/>

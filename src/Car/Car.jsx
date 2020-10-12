@@ -4,6 +4,12 @@ import withClass from '../hoc/withClass';
 import PropTypes from 'prop-types';
 
 class Car extends React.Component {
+	componentDidMount() {
+		if (this.props.index === 1) {
+			this.inputRef.focus();
+		}
+	}
+
 	render() {
 		const inputClasses = ['input'];
 
@@ -20,6 +26,7 @@ class Car extends React.Component {
 					Year: <strong>{this.props.year}</strong>
 				</p>
 				<input
+					ref={(inputRef) => (this.inputRef = inputRef)}
 					type='text'
 					onChange={this.props.onChangeName}
 					value={this.props.name}
@@ -35,6 +42,7 @@ class Car extends React.Component {
 Car.propTypes = {
 	name: PropTypes.string,
 	year: PropTypes.number,
+	index: PropTypes.number,
 	onChangeName: PropTypes.func,
 	onDelete: PropTypes.func,
 };
